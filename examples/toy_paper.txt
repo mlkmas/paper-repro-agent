@@ -1,0 +1,27 @@
+A Small Benchmark of Classical Classifiers on the Wisconsin Diagnostic Breast Cancer Dataset
+(Synthetic example paper shipped with paper-repro-agent for offline testing. Not a real publication.)
+
+Abstract
+We compare four classical classifiers on the Wisconsin Diagnostic Breast Cancer (WDBC) dataset. With standardized features and a stratified 70/30 train-test split, L2-regularized logistic regression reaches 98.2% test accuracy, the best of the models we evaluate, while a random forest reaches 96.5%. We argue that simple linear models remain strong baselines for small tabular medical datasets.
+
+1. Introduction
+Tabular medical datasets are often small, and complex models can overfit. We revisit four standard classifiers on WDBC to provide reproducible baseline numbers.
+
+2. Data
+WDBC contains 569 samples with 30 real-valued features computed from digitized images of fine needle aspirates, labeled malignant (212) or benign (357). We use the copy distributed with scikit-learn (load_breast_cancer).
+
+3. Experimental setup
+We use a stratified train-test split with 30% of the data held out for testing and random seed 42. All features are standardized using statistics computed on the training set only. Logistic regression uses L2 regularization with C = 1.0 and the lbfgs solver (max 1000 iterations). The random forest uses 200 trees. The SVM uses an RBF kernel with C = 1.0. k-NN uses k = 5. We report accuracy on the held-out test set.
+
+4. Results
+Table 1: Test accuracy (%) on WDBC, stratified 70/30 split, seed 42.
+Model                  Test accuracy (%)
+Logistic regression    98.2
+SVM (RBF)              97.9
+Random forest          96.5
+k-NN (k=5)             96.0
+
+Logistic regression achieves the best accuracy at 98.2%. The random forest, despite its higher capacity, trails by 1.7 points.
+
+5. Conclusion
+Simple, well-regularized linear models are hard to beat on WDBC.
